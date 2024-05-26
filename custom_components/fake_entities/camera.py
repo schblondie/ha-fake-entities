@@ -28,6 +28,11 @@ class FakeCameraEntity(Camera):
     self._selected_playback_speed = "normal"
 
   @property
+  def stream(self):
+      """Return the stream of the camera entity."""
+      return None
+  
+  @property
   def brand(self):
     """Return the brand of the camera entity."""
     return self._brand
