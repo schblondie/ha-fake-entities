@@ -40,7 +40,7 @@ class FakesensorEntity(SensorEntity):
   @property
   def state_class(self):
     """Return the state class of the sensor entity."""
-    return SensorStateClass.MEASUREMENTz
+    return SensorStateClass.MEASUREMENT
 
   @property
   def device_info(self):

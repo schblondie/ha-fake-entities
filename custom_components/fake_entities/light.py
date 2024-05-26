@@ -6,6 +6,12 @@ import math
 BRIGHTNESS_SCALE = (1, 1023)
 
 class FakelightEntity(LightEntity):
+    """Representation of a fake light entity."""
+
+    def __init__(self, name):
+        """Initialize the light entity."""
+        self._name = name
+        
     @property
     def brightness(self) -> int:
         return value_to_brightness(BRIGHTNESS_SCALE, self._device.brightness)

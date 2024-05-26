@@ -1,5 +1,5 @@
 import logging
-from homeassistant.components.camera import (
+from homeassistant.components.camera.camera import (
   CameraEntity,
   CameraEntityFeature,
 )

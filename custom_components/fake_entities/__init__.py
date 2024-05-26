@@ -5,7 +5,7 @@ from homeassistant.config_entries import ConfigEntry
 DOMAIN = "fake_entities"
 DOMAINS = [
     'alarm_control_panel', 'binary_sensor', 'camera', 'climate', 'cover',
-    'device_tracker', 'fan', 'light', 'lock', 'media_player', 'notify',
+    'device_tracker', 'fan', 'light', 'lock', 'media_player',
     'sensor', 'switch', 'vacuum', 'water_heater'
 ]
 
