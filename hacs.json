@@ -1,0 +1,9 @@
+{
+  "name": "Fake Enitites",
+  "content_in_root": false,
+  "domains": ["fake_enitites"],
+  "country": "worldwide",
+  "homeassistant": "0.110.0",
+  "render_readme": true,
+  "iot_class": "local_push"
+}
