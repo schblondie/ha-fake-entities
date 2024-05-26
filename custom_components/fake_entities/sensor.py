@@ -3,12 +3,10 @@ import logging
 """Fake sensor Entity for Home Assistant."""
 
 from homeassistant.components.sensor import (
-  DEVICE_CLASS_HUMIDITY,
-  DEVICE_CLASS_TEMPERATURE,
-  STATE_CLASS_MEASUREMENT,
   SensorEntity,
+  SensorDeviceClass,
+  SensorStateClass,
 )
-
 _LOGGER = logging.getLogger(__name__)
 
 class FakesensorEntity(SensorEntity):
@@ -37,12 +35,12 @@ class FakesensorEntity(SensorEntity):
   @property
   def device_class(self):
     """Return the device class of the sensor entity."""
-    return DEVICE_CLASS_TEMPERATURE
+    return SensorDeviceClass.TEMPERATURE
 
   @property
   def state_class(self):
     """Return the state class of the sensor entity."""
-    return STATE_CLASS_MEASUREMENT
+    return SensorStateClass.MEASUREMENTz
 
   @property
   def device_info(self):

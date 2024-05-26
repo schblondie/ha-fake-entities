@@ -24,6 +24,7 @@ class FakevacuumEntity(StateVacuumEntity):
         self._status = None
         self._battery_level = None
         self._fan_speed = None
+        self._attr_fan_speed_list = ["low", "medium", "high"]
 
     @property
     def name(self):

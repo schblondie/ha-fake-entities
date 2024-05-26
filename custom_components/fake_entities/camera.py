@@ -1,7 +1,4 @@
 import logging
-
-"""Fake camera Entity for Home Assistant."""
-
 from homeassistant.components.camera import (
   CameraEntity,
   CameraEntityFeature,
@@ -15,14 +12,79 @@ class FakeCameraEntity(CameraEntity):
   def __init__(self, name):
     """Initialize the camera entity."""
     self._name = name
+    self._brand = None
+    self._frame_interval = 0.5
+    self._frontend_stream_type = None
+    self._is_on = True
     self._is_recording = False
     self._is_streaming = False
-    self._is_muted = False
+    self._model = None
+    self._motion_detection_enabled = False
+    self._use_stream_for_stills = False
     self._volume_level = 0.5
     self._selected_stream = "main"
     self._selected_record_mode = "continuous"
     self._selected_snapshot_resolution = "high"
     self._selected_playback_speed = "normal"
+
+  @property
+  def brand(self):
+    """Return the brand of the camera entity."""
+    return self._brand
+
+  @property
+  def frame_interval(self):
+    """Return the frame interval of the camera entity."""
+    return self._frame_interval
+
+  @property
+  def frontend_stream_type(self):
+    """Return the frontend stream type of the camera entity."""
+    return self._frontend_stream_type
+
+  @property
+  def is_on(self):
+    """Return the on state of the camera entity."""
+    return self._is_on
+
+  @property
+  def model(self):
+    """Return the model of the camera entity."""
+    return self._model
+
+  @property
+  def motion_detection_enabled(self):
+    """Return the motion detection state of the camera entity."""
+    return self._motion_detection_enabled
+
+  @property
+  def use_stream_for_stills(self):
+    """Return the use stream for stills state of the camera entity."""
+    return self._use_stream_for_stills
+
+  async def async_turn_on(self):
+    """Turn on the camera entity."""
+    _LOGGER.info("Turning on the camera")
+    self._is_on = True
+
+  async def async_turn_off(self):
+    """Turn off the camera entity."""
+    _LOGGER.info("Turning off the camera")
+    self._is_on = False
+
+  async def async_enable_motion_detection(self):
+    """Enable motion detection in the camera."""
+    _LOGGER.info("Enabling motion detection")
+    self._motion_detection_enabled = True
+
+  async def async_disable_motion_detection(self):
+    """Disable motion detection in the camera."""
+    _LOGGER.info("Disabling motion detection")
+    self._motion_detection_enabled = False
+
+  async def async_handle_web_rtc_offer(self, offer_sdp: str) -> str | None:
+    """Handle the WebRTC offer and return an answer."""
+    return None
 
   @property
   def name(self):
@@ -77,79 +139,6 @@ class FakeCameraEntity(CameraEntity):
     """Return the selected playback speed of the camera entity."""
     return self._selected_playback_speed
 
-  def turn_on(self):
-    """Turn on the camera entity."""
-    _LOGGER.info("Turning on the camera")
-
-  def turn_off(self):
-    """Turn off the camera entity."""
-    _LOGGER.info("Turning off the camera")
-
-  def stream(self):
-    """Start streaming from the camera entity."""
-    _LOGGER.info("Starting the camera stream")
-
-  def record(self):
-    """Start recording from the camera entity."""
-    _LOGGER.info("Starting camera recording")
-    self._is_recording = True
-
-  def stop_recording(self):
-    """Stop recording from the camera entity."""
-    _LOGGER.info("Stopping camera recording")
-    self._is_recording = False
-
-  def snapshot(self):
-    """Take a snapshot from the camera entity."""
-    _LOGGER.info("Taking a camera snapshot")
-
-  def play(self):
-    """Start playing back from the camera entity."""
-    _LOGGER.info("Starting camera playback")
-
-  def pause(self):
-    """Pause the camera entity playback."""
-    _LOGGER.info("Pausing camera playback")
-
-  def stop(self):
-    """Stop the camera entity playback."""
-    _LOGGER.info("Stopping camera playback")
-
-  def set_volume_level(self, volume):
-    """Set the volume level of the camera entity."""
-    _LOGGER.info("Setting camera volume level to %s", volume)
-    self._volume_level = volume
-
-  def mute_volume(self):
-    """Mute the volume of the camera entity."""
-    _LOGGER.info("Muting camera volume")
-    self._is_muted = True
-
-  def unmute_volume(self):
-    """Unmute the volume of the camera entity."""
-    _LOGGER.info("Unmuting camera volume")
-    self._is_muted = False
-
-  def select_stream(self, stream):
-    """Select a stream from the camera entity."""
-    _LOGGER.info("Selecting camera stream: %s", stream)
-    self._selected_stream = stream
-
-  def select_record_mode(self, record_mode):
-    """Select a record mode from the camera entity."""
-    _LOGGER.info("Selecting camera record mode: %s", record_mode)
-    self._selected_record_mode = record_mode
-
-  def select_snapshot_resolution(self, resolution):
-    """Select a snapshot resolution from the camera entity."""
-    _LOGGER.info("Selecting camera snapshot resolution: %s", resolution)
-    self._selected_snapshot_resolution = resolution
-
-  def select_playback_speed(self, speed):
-    """Select a playback speed from the camera entity."""
-    _LOGGER.info("Selecting camera playback speed: %s", speed)
-    self._selected_playback_speed = speed
-
   async def async_camera_image(self):
     """Return bytes of camera image."""
     return None
@@ -158,15 +147,6 @@ class FakeCameraEntity(CameraEntity):
     """Return the source of the stream."""
     return None
 
-  def enable_motion_detection(self):
-    """Enable motion detection in the camera."""
-    _LOGGER.info("Enabling motion detection")
-    self._motion_detection_enabled = True
-
-  def disable_motion_detection(self):
-    """Disable motion detection in the camera."""
-    _LOGGER.info("Disabling motion detection")
-    self._motion_detection_enabled = False
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake camera entry."""
   async_add_entities([FakeCameraEntity("Fake Camera")])

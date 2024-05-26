@@ -5,16 +5,6 @@ import logging
 from homeassistant.components.lock import (
   LockEntity,
   LockEntityFeature,
-  SUPPORT_LOCK,
-  SUPPORT_UNLOCK,
-  SUPPORT_OPEN_TILT,
-  SUPPORT_CLOSE_TILT,
-  SUPPORT_STOP,
-  SUPPORT_SET_CODE,
-  SUPPORT_CLEAR_CODE,
-  SUPPORT_ALARM,
-  SUPPORT_BATTERY,
-  SUPPORT_STATUS,
 )
 
 class FakelockEntity(LockEntity):
@@ -60,16 +50,6 @@ class FakelockEntity(LockEntity):
     """Return the list of supported features."""
     return (
       LockEntityFeature.OPEN
-      | SUPPORT_LOCK
-      | SUPPORT_UNLOCK
-      | SUPPORT_OPEN_TILT
-      | SUPPORT_CLOSE_TILT
-      | SUPPORT_STOP
-      | SUPPORT_SET_CODE
-      | SUPPORT_CLEAR_CODE
-      | SUPPORT_ALARM
-      | SUPPORT_BATTERY
-      | SUPPORT_STATUS
     )
   def lock(self, **kwargs):
     """Lock the lock."""

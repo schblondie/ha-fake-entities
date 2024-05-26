@@ -1,14 +1,6 @@
 from homeassistant.components.media_player import (
     MediaPlayerEntity,
-    SUPPORT_PLAY,
-    SUPPORT_PAUSE,
-    SUPPORT_STOP,
-    SUPPORT_PREVIOUS_TRACK,
-    SUPPORT_NEXT_TRACK,
-    SUPPORT_VOLUME_SET,
-    SUPPORT_VOLUME_MUTE,
-    SUPPORT_SELECT_SOURCE,
-    SUPPORT_PLAY_MEDIA,
+    MediaPlayerEntityFeature,
 )
 
 class Fakemedia_playerEntity(MediaPlayerEntity):
@@ -68,7 +60,17 @@ class Fakemedia_playerEntity(MediaPlayerEntity):
     @property
     def supported_features(self):
         """Flag media player features that are supported."""
-        return SUPPORT_PLAY | SUPPORT_PAUSE | SUPPORT_STOP | SUPPORT_PREVIOUS_TRACK | SUPPORT_NEXT_TRACK | SUPPORT_VOLUME_SET | SUPPORT_VOLUME_MUTE | SUPPORT_SELECT_SOURCE | SUPPORT_PLAY_MEDIA
+        return (
+            MediaPlayerEntityFeature.PAUSE |
+            MediaPlayerEntityFeature.VOLUME_SET |
+            MediaPlayerEntityFeature.VOLUME_MUTE |
+            MediaPlayerEntityFeature.PREVIOUS_TRACK |
+            MediaPlayerEntityFeature.NEXT_TRACK |
+            MediaPlayerEntityFeature.PLAY_MEDIA |
+            MediaPlayerEntityFeature.SELECT_SOURCE |
+            MediaPlayerEntityFeature.STOP |
+            MediaPlayerEntityFeature.PLAY
+        )
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the fake media_player entry."""
     async_add_entities([Fakemedia_playerEntity("Fake Media Player")])
