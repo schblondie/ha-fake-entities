@@ -4,7 +4,7 @@ import sys
 import ast
 
 # Define the directory for custom components
-dir_path = './custom_components'
+dir_path = './custom_components/fake_entities'
 
 # Get all Python files in the custom components directory
 files = os.listdir(dir_path)
@@ -46,6 +46,6 @@ for domain in domains:
 
 # Remove any Python files not in the domains list
 for file in py_files:
-    if file not in ['__init__.py', 'create_domains.py'] and re.sub('.py$', '', file) not in domains:
+    if file not in ['__init__.py', 'config_flow.py', 'const.py'] and re.sub('.py$', '', file) not in domains:
         os.remove(os.path.join(dir_path, file))
         print(f"Removed {file}")
