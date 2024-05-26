@@ -1,10 +1,10 @@
 from homeassistant.components.device_tracker import (
-  SOURCE_TYPE_GPS,
-  DeviceTrackerEntity
+  SourceType,
+  TrackerEntity
 )
 from homeassistant.const import STATE_HOME, STATE_NOT_HOME
 
-class Fakedevice_trackerEntity(DeviceTrackerEntity):
+class Fakedevice_trackerEntity(TrackerEntity):
   """Representation of a fake device_tracker entity."""
 
   def __init__(self, name):
@@ -13,7 +13,7 @@ class Fakedevice_trackerEntity(DeviceTrackerEntity):
     self._state = STATE_HOME
     self._latitude = 0.0
     self._longitude = 0.0
-    self._source_type = SOURCE_TYPE_GPS
+    self._source_type = SourceType.GPS
     self._battery = 100
     self._gps_accuracy = 0
     self._attributes = {}

@@ -4,20 +4,7 @@ import logging
 
 from homeassistant.components.camera import (
   CameraEntity,
-  SUPPORT_ON_OFF,
-  SUPPORT_STREAM,
-  SUPPORT_RECORD,
-  SUPPORT_SNAPSHOT,
-  SUPPORT_PLAY,
-  SUPPORT_PAUSE,
-  SUPPORT_STOP,
-  SUPPORT_VOLUME_SET,
-  SUPPORT_VOLUME_MUTE,
-  SUPPORT_AUDIO,
-  SUPPORT_SELECT_STREAM,
-  SUPPORT_SELECT_RECORD_MODE,
-  SUPPORT_SELECT_SNAPSHOT_RESOLUTION,
-  SUPPORT_SELECT_PLAYBACK_SPEED,
+  CameraEntityFeature,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -46,20 +33,8 @@ class FakeCameraEntity(CameraEntity):
   def supported_features(self):
     """Return the supported features of the camera entity."""
     return (
-      SUPPORT_ON_OFF
-      | SUPPORT_STREAM
-      | SUPPORT_RECORD
-      | SUPPORT_SNAPSHOT
-      | SUPPORT_PLAY
-      | SUPPORT_PAUSE
-      | SUPPORT_STOP
-      | SUPPORT_VOLUME_SET
-      | SUPPORT_VOLUME_MUTE
-      | SUPPORT_AUDIO
-      | SUPPORT_SELECT_STREAM
-      | SUPPORT_SELECT_RECORD_MODE
-      | SUPPORT_SELECT_SNAPSHOT_RESOLUTION
-      | SUPPORT_SELECT_PLAYBACK_SPEED
+        CameraEntityFeature.ON_OFF
+        | CameraEntityFeature.STREAM
     )
 
   @property
@@ -174,6 +149,24 @@ class FakeCameraEntity(CameraEntity):
     """Select a playback speed from the camera entity."""
     _LOGGER.info("Selecting camera playback speed: %s", speed)
     self._selected_playback_speed = speed
+
+  async def async_camera_image(self):
+    """Return bytes of camera image."""
+    return None
+
+  async def stream_source(self):
+    """Return the source of the stream."""
+    return None
+
+  def enable_motion_detection(self):
+    """Enable motion detection in the camera."""
+    _LOGGER.info("Enabling motion detection")
+    self._motion_detection_enabled = True
+
+  def disable_motion_detection(self):
+    """Disable motion detection in the camera."""
+    _LOGGER.info("Disabling motion detection")
+    self._motion_detection_enabled = False
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake camera entry."""
   async_add_entities([FakeCameraEntity("Fake Camera")])

@@ -71,7 +71,6 @@ class UltimateClimateEntity(FakeclimateEntity):
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake climate entry."""
   async_add_entities([
-    FakeclimateEntity("Fake Climate"),
     FakeHeaterEntity("Fake Heater"),
     FakeFanEntity("Fake Fan"),
     FakeACEntity("Fake AC"),

@@ -8,8 +8,6 @@ from homeassistant.components.light import (
   ATTR_EFFECT,
   ATTR_HS_COLOR,
   ATTR_RGB_COLOR,
-  ATTR_TRANSITION,
-  ATTR_WHITE_VALUE,
   SUPPORT_BRIGHTNESS,
   SUPPORT_COLOR,
   SUPPORT_COLOR_TEMP,
@@ -106,9 +104,6 @@ class FakelightEntity(LightEntity):
 
     if ATTR_EFFECT in kwargs:
       self._effect = kwargs[ATTR_EFFECT]
-
-    if ATTR_WHITE_VALUE in kwargs:
-      self._white_value = kwargs[ATTR_WHITE_VALUE]
 
   def turn_off(self, **kwargs):
     """Turn the light off."""

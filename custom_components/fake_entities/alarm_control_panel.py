@@ -35,7 +35,7 @@ class FakeAlarmControlPanelEntity(AlarmControlPanelEntity):
       | AlarmControlPanelEntityFeature.ARM_HOME
       | AlarmControlPanelEntityFeature.ARM_NIGHT
       | AlarmControlPanelEntityFeature.TRIGGER
-      | AlarmControlPanelEntityFeature.DISARM
+      | AlarmControlPanelEntityFeature.ARM_CUSTOM_BYPASS
     )
 
   def alarm_arm_away(self, code=None):

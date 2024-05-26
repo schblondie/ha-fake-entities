@@ -1,8 +1,7 @@
 import logging
-from homeassistant.components.binary_sensor import BinarySensorEntity, DEVICE_CLASS_MOTION
+from homeassistant.components.binary_sensor import BinarySensorEntity, BinarySensorDeviceClass
 
 """Fake binary_sensor Entity for Home Assistant."""
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -27,7 +26,7 @@ class FakeBinarySensorEntity(BinarySensorEntity):
   @property
   def device_class(self):
     """Return the device class of the binary_sensor entity."""
-    return DEVICE_CLASS_MOTION
+    return BinarySensorDeviceClass.MOTION
 
   def update(self):
     """Update the state of the binary_sensor entity."""
@@ -35,6 +34,7 @@ class FakeBinarySensorEntity(BinarySensorEntity):
     self._state = True
 
   # Add more methods and properties here
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake binary_sensor entry."""
   async_add_entities([FakeBinarySensorEntity("Fake Motion Sensor")])

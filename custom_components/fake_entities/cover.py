@@ -4,11 +4,7 @@ import logging
 
 from homeassistant.components.cover import (
   CoverEntity,
-  SUPPORT_OPEN,
-  SUPPORT_CLOSE,
-  SUPPORT_STOP,
-  SUPPORT_SET_POSITION,
-  SUPPORT_SET_TILT_POSITION,
+  CoverEntityFeature,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -57,11 +53,11 @@ class FakeCoverEntity(CoverEntity):
   def supported_features(self):
     """Flag supported features."""
     return (
-      SUPPORT_OPEN
-      | SUPPORT_CLOSE
-      | SUPPORT_STOP
-      | SUPPORT_SET_POSITION
-      | SUPPORT_SET_TILT_POSITION
+      CoverEntityFeature.OPEN
+      | CoverEntityFeature.CLOSE
+      | CoverEntityFeature.STOP
+      | CoverEntityFeature.SET_POSITION
+      | CoverEntityFeature.SET_TILT_POSITION
     )
 
   def open_cover(self, **kwargs):
