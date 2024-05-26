@@ -8,5 +8,5 @@
   "requirements": [],
   "homeassistant": "0.110.0",
   "config_flow": true,
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
