@@ -91,3 +91,7 @@ class FakevacuumEntity(VacuumEntity):
     def send_command(self, command, params=None, **kwargs):
         """Send a command to a vacuum cleaner."""
         pass
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    """Set up the fake vacuum entry."""
+    async_add_entities([FakevacuumEntity("Fake Vacuum")])
+    return True

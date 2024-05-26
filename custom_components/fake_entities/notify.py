@@ -42,5 +42,7 @@ class FakenotifyEntity(BaseNotificationService):
     _LOGGER.info("Title: %s", title)
     _LOGGER.info("Title Icon: %s", title_icon)
     _LOGGER.info("Title Color: %s", title_color)
-
-  # Add more methods and properties here
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake notify entry."""
+  async_add_entities([FakenotifyEntity("Fake Notify")])
+  return True

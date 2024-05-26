@@ -74,3 +74,7 @@ class FakefanEntity(FanEntity):
     # Add code here to update the state of the fan entity
 
   # Add more methods and properties here
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake fan entry."""
+  async_add_entities([FakefanEntity("Fake Fan")])
+  return True

@@ -89,3 +89,7 @@ class FakeCoverEntity(CoverEntity):
     """Set the cover tilt position."""
     self._current_tilt_position = tilt_position
     self.schedule_update_ha_state()
+async def async_setup_entry(hass, entry, async_add_entities):
+  """Set up the Fake Cover Entity."""
+  async_add_entities([FakeCoverEntity("Fake Cover")])
+  return True

@@ -64,3 +64,7 @@ class FakesensorEntity(SensorEntity):
     """Update the state of the sensor entity."""
     # Add your update logic here
     self._state = 25.0
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake sensor entry."""
+  async_add_entities([FakesensorEntity("Fake Temperature Sensor")])
+  return True

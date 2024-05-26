@@ -63,3 +63,7 @@ class FakeWaterHeaterEntity(WaterHeaterEntity):
     def turn_away_mode_off(self):
         """Turn away mode off."""
         pass
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    """Set up the fake water heater entry."""
+    async_add_entities([FakeWaterHeaterEntity("Fake Water Heater")])
+    return True

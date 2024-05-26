@@ -68,3 +68,7 @@ class FakeAlarmControlPanelEntity(AlarmControlPanelEntity):
     # Add your code here to disarm the alarm
 
   # Add more methods and properties here
+async def async_setup_entry(hass, entry, async_add_entities):
+    """Set up the Fake Alarm Control Panel Entity from a config entry."""
+    async_add_entities([FakeAlarmControlPanelEntity(name="My Fake Alarm")])
+    return True

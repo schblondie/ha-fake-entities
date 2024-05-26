@@ -134,3 +134,7 @@ class FakelockEntity(LockEntity):
       "battery_level": self._battery_level,
       "alarm": self._alarm,
     }
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake lock entry."""
+  async_add_entities([FakelockEntity("Fake Lock")])
+  return True

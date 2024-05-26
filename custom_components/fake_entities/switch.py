@@ -56,5 +56,7 @@ class FakeswitchEntity(SwitchEntity):
   def supported_features(self):
     """Flag supported features."""
     return 0
-
-  # Add more methods and properties here
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake switch entry."""
+  async_add_entities([FakeswitchEntity("Fake Switch")])
+  return True

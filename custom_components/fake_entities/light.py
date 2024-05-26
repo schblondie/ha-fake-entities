@@ -113,5 +113,7 @@ class FakelightEntity(LightEntity):
   def turn_off(self, **kwargs):
     """Turn the light off."""
     self._state = False
-
-  # Add more methods and properties here
+async def async_setup_entry(hass, entry, async_add_entities):
+  """Set up the fake light entry."""
+  async_add_entities([FakelightEntity("Fake Light")])
+  return True

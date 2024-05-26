@@ -57,3 +57,7 @@ class Fakedevice_trackerEntity(DeviceTrackerEntity):
   def device_state_attributes(self):
     """Return the state attributes of the entity."""
     return self._attributes
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake device_tracker entry."""
+  async_add_entities([Fakedevice_trackerEntity("Fake Device Tracker")])
+  return True

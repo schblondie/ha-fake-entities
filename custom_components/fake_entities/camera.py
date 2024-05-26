@@ -174,3 +174,7 @@ class FakeCameraEntity(CameraEntity):
     """Select a playback speed from the camera entity."""
     _LOGGER.info("Selecting camera playback speed: %s", speed)
     self._selected_playback_speed = speed
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake camera entry."""
+  async_add_entities([FakeCameraEntity("Fake Camera")])
+  return True

@@ -69,3 +69,7 @@ class Fakemedia_playerEntity(MediaPlayerEntity):
     def supported_features(self):
         """Flag media player features that are supported."""
         return SUPPORT_PLAY | SUPPORT_PAUSE | SUPPORT_STOP | SUPPORT_PREVIOUS_TRACK | SUPPORT_NEXT_TRACK | SUPPORT_VOLUME_SET | SUPPORT_VOLUME_MUTE | SUPPORT_SELECT_SOURCE | SUPPORT_PLAY_MEDIA
+async def async_setup_entry(hass, config_entry, async_add_entities):
+    """Set up the fake media_player entry."""
+    async_add_entities([Fakemedia_playerEntity("Fake Media Player")])
+    return True

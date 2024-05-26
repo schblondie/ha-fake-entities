@@ -35,3 +35,7 @@ class FakeBinarySensorEntity(BinarySensorEntity):
     self._state = True
 
   # Add more methods and properties here
+async def async_setup_entry(hass, config_entry, async_add_entities):
+  """Set up the fake binary_sensor entry."""
+  async_add_entities([FakeBinarySensorEntity("Fake Motion Sensor")])
+  return True
