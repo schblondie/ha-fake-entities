@@ -4,14 +4,7 @@ import logging
 
 from homeassistant.components.climate import (
   ClimateEntity,
-  SUPPORT_TARGET_TEMPERATURE,
-  SUPPORT_TARGET_TEMPERATURE_RANGE,
-  SUPPORT_TARGET_HUMIDITY,
-  SUPPORT_FAN_MODE,
-  SUPPORT_PRESET_MODE,
-  SUPPORT_SWING_MODE,
-  SUPPORT_TURN_ON,
-  SUPPORT_TURN_OFF,
+  ClimateEntityFeature,
 )
 
 class FakeclimateEntity(ClimateEntity):
@@ -44,14 +37,14 @@ class FakeclimateEntity(ClimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_TARGET_TEMPERATURE
-      | SUPPORT_TARGET_TEMPERATURE_RANGE
-      | SUPPORT_TARGET_HUMIDITY
-      | SUPPORT_FAN_MODE
-      | SUPPORT_PRESET_MODE
-      | SUPPORT_SWING_MODE
-      | SUPPORT_TURN_ON
-      | SUPPORT_TURN_OFF
+      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
+      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.SUPPORT_TARGET_HUMIDITY
+      | ClimateEntityFeature.SUPPORT_FAN_MODE
+      | ClimateEntityFeature.SUPPORT_PRESET_MODE
+      | ClimateEntityFeature.SUPPORT_SWING_MODE
+      | ClimateEntityFeature.SUPPORT_TURN_ON
+      | ClimateEntityFeature.SUPPORT_TURN_OFF
     )
 
   @property
@@ -184,9 +177,10 @@ class FakeHeaterEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_TARGET_TEMPERATURE
-      | SUPPORT_TURN_ON
-      | SUPPORT_TURN_OFF
+      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
+      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.SUPPORT_TURN_ON
+      | ClimateEntityFeature.SUPPORT_TURN_OFF
     )
 
 class FakeFanEntity(FakeclimateEntity):
@@ -196,10 +190,10 @@ class FakeFanEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_FAN_MODE
-      | SUPPORT_TURN_ON
-      | SUPPORT_TURN_OFF
-
+      ClimateEntityFeature.SUPPORT_FAN_MODE
+      | ClimateEntityFeature.SUPPORT_SWING_MODE
+      | ClimateEntityFeature.SUPPORT_TURN_ON
+      | ClimateEntityFeature.SUPPORT_TURN_OFF
     )
 
 class FakeACEntity(FakeclimateEntity):
@@ -209,10 +203,11 @@ class FakeACEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_TARGET_TEMPERATURE
-      | SUPPORT_FAN_MODE
-      | SUPPORT_TURN_ON
-      | SUPPORT_TURN_OFF
+      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
+      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.SUPPORT_FAN_MODE
+      | ClimateEntityFeature.SUPPORT_TURN_ON
+      | ClimateEntityFeature.SUPPORT_TURN_OFF
     )
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
