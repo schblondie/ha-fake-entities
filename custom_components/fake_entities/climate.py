@@ -5,6 +5,7 @@ import logging
 from homeassistant.components.climate import (
   ClimateEntity,
   ClimateEntityFeature,
+  HVACMode,
 )
 
 class FakeclimateEntity(ClimateEntity):
@@ -27,6 +28,8 @@ class FakeclimateEntity(ClimateEntity):
     self._away_mode = None
     self._target_temperature_range = None
     self._target_humidity_range = None
+    self._target_temperature_low = None
+    self._target_temperature_high = None
 
   @property
   def name(self):
@@ -111,6 +114,16 @@ class FakeclimateEntity(ClimateEntity):
   def target_temperature_range(self):
     """Return the target temperature range."""
     return self._target_temperature_range
+  
+  @property
+  def target_temperature_low(self):
+    """Return the target temperature low."""
+    return self._target_temperature_low
+  
+  @property
+  def target_temperature_high(self):
+    """Return the target temperature high."""
+    return self._target_temperature_high
 
   @property
   def target_humidity_range(self):
@@ -120,7 +133,22 @@ class FakeclimateEntity(ClimateEntity):
   @property
   def hvac_modes(self):
     """Return the list of available hvac operation modes."""
-    return [HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_OFF]
+    return [HVACMode.OFF, HVACMode.HEAT, HVACMode.COOL, HVACMode.HEAT_COOL, HVACMode.AUTO, HVACMode.DRY, HVACMode.FAN_ONLY]
+  
+  @property
+  def preset_modes(self):
+    """Return the list of available preset operation modes."""
+    return ["none", "eco", "away", "boost", "comfort", "home", "sleep", 'activity']
+  
+  @property
+  def swing_modes(self):
+    """Return the list of available swing operation modes."""
+    return ["swing_off", "swing_on", "swing_vertical", "swing_horizontal", "swing_both"]
+  
+  @property
+  def fan_modes(self):
+    """Return the list of available fan operation modes."""
+    return ["fan_on", "fan_off", "fan_auto", "fan_low", "fan_medium", "fan_high", "fan_middle", "fan_diffuse"]
   
   def set_temperature(self, **kwargs):
     """Set the target temperature."""
@@ -171,6 +199,14 @@ class FakeclimateEntity(ClimateEntity):
   def set_target_temperature_range(self, target_temperature_range):
     """Set the target temperature range."""
     self._target_temperature_range = target_temperature_range
+
+  def set_target_temperature_low(self, target_temperature_low):
+    """Set the target temperature low."""
+    self._target_temperature_low = target_temperature_low
+  
+  def set_target_temperature_high(self, target_temperature_high):
+    """Set the target temperature high."""
+    self._target_temperature_high = target_temperature_high
 
   def set_target_humidity_range(self, target_humidity_range):
     """Set the target humidity range."""

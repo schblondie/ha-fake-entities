@@ -26,6 +26,7 @@ class FakeCameraEntity(Camera):
     self._selected_record_mode = "continuous"
     self._selected_snapshot_resolution = "high"
     self._selected_playback_speed = "normal"
+    self._access_tokens = []
 
   @property
   def stream(self):
@@ -56,6 +57,11 @@ class FakeCameraEntity(Camera):
   def model(self):
     """Return the model of the camera entity."""
     return self._model
+
+  @property
+  def access_tokens(self):
+    """Return the access tokens of the camera entity."""
+    return self._access_tokens
 
   @property
   def motion_detection_enabled(self):
