@@ -1,1 +1,1 @@
-DOMAIN = "fake_devices"
+DOMAIN = "fake_entities"
