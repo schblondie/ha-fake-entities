@@ -30,6 +30,7 @@ class FakeclimateEntity(ClimateEntity):
     self._target_humidity_range = None
     self._target_temperature_low = None
     self._target_temperature_high = None
+    self._temperature_unit = '°C'
 
   @property
   def name(self):
@@ -59,6 +60,11 @@ class FakeclimateEntity(ClimateEntity):
   def current_temperature(self):
     """Return the current temperature."""
     return self._current_temperature
+  
+  @property
+  def temperature_unit(self):
+    """Return the unit of measurement used by the platform."""
+    return self._temperature_unit
 
   @property
   def target_humidity(self):

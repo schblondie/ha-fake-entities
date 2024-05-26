@@ -26,7 +26,7 @@ class FakeCameraEntity(Camera):
     self._selected_record_mode = "continuous"
     self._selected_snapshot_resolution = "high"
     self._selected_playback_speed = "normal"
-    self._access_tokens = []
+    self._access_tokens = ['12345']
 
   @property
   def stream(self):
