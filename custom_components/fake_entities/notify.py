@@ -8,7 +8,7 @@ from homeassistant.components.notify import (
   ATTR_TARGET,
   ATTR_TITLE,
   ATTR_TITLE_DEFAULT,
-  ATTR_TITLE_ICON,
+  # ATTR_TITLE_ICON,  # Remove this line
   ATTR_TITLE_COLOR,
   PLATFORM_SCHEMA,
   BaseNotificationService,
@@ -33,15 +33,16 @@ class FakenotifyEntity(BaseNotificationService):
     data = kwargs.get(ATTR_DATA)
     target = kwargs.get(ATTR_TARGET)
     title = kwargs.get(ATTR_TITLE, ATTR_TITLE_DEFAULT)
-    title_icon = kwargs.get(ATTR_TITLE_ICON)
+    # title_icon = kwargs.get(ATTR_TITLE_ICON)  # Remove this line
     title_color = kwargs.get(ATTR_TITLE_COLOR)
 
     _LOGGER.info("Sending message: %s", message)
     _LOGGER.info("Data: %s", data)
     _LOGGER.info("Target: %s", target)
     _LOGGER.info("Title: %s", title)
-    _LOGGER.info("Title Icon: %s", title_icon)
+    # _LOGGER.info("Title Icon: %s", title_icon)  # Remove this line
     _LOGGER.info("Title Color: %s", title_color)
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake notify entry."""
   async_add_entities([FakenotifyEntity("Fake Notify")])

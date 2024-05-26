@@ -4,11 +4,7 @@ import logging
 
 from homeassistant.components.alarm_control_panel import (
   AlarmControlPanelEntity,
-  SUPPORT_ALARM_ARM_AWAY,
-  SUPPORT_ALARM_ARM_HOME,
-  SUPPORT_ALARM_ARM_NIGHT,
-  SUPPORT_ALARM_TRIGGER,
-  SUPPORT_ALARM_DISARM,
+  AlarmControlPanelEntityFeature,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -35,11 +31,11 @@ class FakeAlarmControlPanelEntity(AlarmControlPanelEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_ALARM_ARM_AWAY
-      | SUPPORT_ALARM_ARM_HOME
-      | SUPPORT_ALARM_ARM_NIGHT
-      | SUPPORT_ALARM_TRIGGER
-      | SUPPORT_ALARM_DISARM
+      AlarmControlPanelEntityFeature.ARM_AWAY
+      | AlarmControlPanelEntityFeature.ARM_HOME
+      | AlarmControlPanelEntityFeature.ARM_NIGHT
+      | AlarmControlPanelEntityFeature.TRIGGER
+      | AlarmControlPanelEntityFeature.DISARM
     )
 
   def alarm_arm_away(self, code=None):

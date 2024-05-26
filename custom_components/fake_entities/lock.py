@@ -4,8 +4,7 @@ import logging
 
 from homeassistant.components.lock import (
   LockEntity,
-  SUPPORT_OPEN,
-  SUPPORT_CLOSE,
+  LockEntityFeature,
   SUPPORT_LOCK,
   SUPPORT_UNLOCK,
   SUPPORT_OPEN_TILT,
@@ -17,8 +16,6 @@ from homeassistant.components.lock import (
   SUPPORT_BATTERY,
   SUPPORT_STATUS,
 )
-
-_LOGGER = logging.getLogger(__name__)
 
 class FakelockEntity(LockEntity):
   """Representation of a fake lock entity."""
@@ -62,8 +59,7 @@ class FakelockEntity(LockEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      SUPPORT_OPEN
-      | SUPPORT_CLOSE
+      LockEntityFeature.OPEN
       | SUPPORT_LOCK
       | SUPPORT_UNLOCK
       | SUPPORT_OPEN_TILT
@@ -75,7 +71,6 @@ class FakelockEntity(LockEntity):
       | SUPPORT_BATTERY
       | SUPPORT_STATUS
     )
-
   def lock(self, **kwargs):
     """Lock the lock."""
     self._is_locked = True
@@ -87,9 +82,11 @@ class FakelockEntity(LockEntity):
   def open(self, **kwargs):
     """Open the lock."""
     self._is_open = True
+    self._is_locked = False
 
   def close(self, **kwargs):
     """Close the lock."""
+    self._is_locked = True
     self._is_open = False
 
   def open_tilt(self, **kwargs):

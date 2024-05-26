@@ -2,12 +2,10 @@ import logging
 
 """Fake fan Entity for Home Assistant."""
 
-from homeassistant.components.fan import (
-  FanEntity,
-  SUPPORT_SET_SPEED,
-  SUPPORT_OSCILLATE,
-  SUPPORT_DIRECTION,
-)
+from homeassistant.components.fan import FanEntity, FanEntityFeature
+SUPPORT_SET_SPEED = FanEntityFeature.SET_SPEED
+SUPPORT_OSCILLATE = FanEntityFeature.OSCILLATE
+SUPPORT_DIRECTION = FanEntityFeature.DIRECTION
 
 _LOGGER = logging.getLogger(__name__)
 

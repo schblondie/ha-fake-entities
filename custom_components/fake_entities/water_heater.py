@@ -1,12 +1,9 @@
-import logging
-from homeassistant.components.water_heater import (
-    WaterHeaterEntity,
-    SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_OPERATION_MODE,
-    SUPPORT_AWAY_MODE,
-)
+from homeassistant.components.water_heater import WaterHeaterEntity, WaterHeaterEntityFeature
 
-_LOGGER = logging.getLogger(__name__)
+# Replace the deprecated constants with the new ones
+SUPPORT_TARGET_TEMPERATURE = WaterHeaterEntityFeature.TARGET_TEMPERATURE
+SUPPORT_OPERATION_MODE = WaterHeaterEntityFeature.OPERATION_MODE
+SUPPORT_AWAY_MODE = WaterHeaterEntityFeature.AWAY_MODE
 
 class FakeWaterHeaterEntity(WaterHeaterEntity):
     """Representation of a fake water heater entity."""
@@ -17,12 +14,18 @@ class FakeWaterHeaterEntity(WaterHeaterEntity):
         self._temperature = None
         self._operation_mode = None
         self._away_mode = None
+        self._temperature_unit = '°C'
 
     @property
     def name(self):
         """Return the name of the water heater entity."""
         return self._name
-
+    
+    @property
+    def temperature_unit(self):
+        """Return the unit of measurement used by the platform."""
+        return self._temperature_unit
+    
     @property
     def supported_features(self):
         """Return the list of supported features."""

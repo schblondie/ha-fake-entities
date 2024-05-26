@@ -9,12 +9,12 @@ from homeassistant.components.vacuum import (
     SUPPORT_STATE,
     SUPPORT_STATUS,
     SUPPORT_STOP,
-    VacuumEntity,
+    StateVacuumEntity,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
-class FakevacuumEntity(VacuumEntity):
+class FakevacuumEntity(StateVacuumEntity):
     """Representation of a fake vacuum entity."""
 
     def __init__(self, name):
