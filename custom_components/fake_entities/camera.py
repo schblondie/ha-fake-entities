@@ -1,12 +1,12 @@
 import logging
 from homeassistant.components.camera import (
-  CameraEntity,
+  Camera,
   CameraEntityFeature,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
-class FakeCameraEntity(CameraEntity):
+class FakeCameraEntity(Camera):
   """Representation of a fake camera entity."""
 
   def __init__(self, name):

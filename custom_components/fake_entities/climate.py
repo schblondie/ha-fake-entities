@@ -37,14 +37,14 @@ class FakeclimateEntity(ClimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
-      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
-      | ClimateEntityFeature.SUPPORT_TARGET_HUMIDITY
-      | ClimateEntityFeature.SUPPORT_FAN_MODE
-      | ClimateEntityFeature.SUPPORT_PRESET_MODE
-      | ClimateEntityFeature.SUPPORT_SWING_MODE
-      | ClimateEntityFeature.SUPPORT_TURN_ON
-      | ClimateEntityFeature.SUPPORT_TURN_OFF
+      ClimateEntityFeature.TARGET_TEMPERATURE
+      | ClimateEntityFeature.TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.TARGET_HUMIDITY
+      | ClimateEntityFeature.FAN_MODE
+      | ClimateEntityFeature.PRESET_MODE
+      | ClimateEntityFeature.SWING_MODE
+      | ClimateEntityFeature.TURN_ON
+      | ClimateEntityFeature.TURN_OFF
     )
 
   @property
@@ -177,10 +177,10 @@ class FakeHeaterEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
-      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
-      | ClimateEntityFeature.SUPPORT_TURN_ON
-      | ClimateEntityFeature.SUPPORT_TURN_OFF
+      ClimateEntityFeature.TARGET_TEMPERATURE
+      | ClimateEntityFeature.TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.TURN_ON
+      | ClimateEntityFeature.TURN_OFF
     )
 
 class FakeFanEntity(FakeclimateEntity):
@@ -190,10 +190,10 @@ class FakeFanEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      ClimateEntityFeature.SUPPORT_FAN_MODE
-      | ClimateEntityFeature.SUPPORT_SWING_MODE
-      | ClimateEntityFeature.SUPPORT_TURN_ON
-      | ClimateEntityFeature.SUPPORT_TURN_OFF
+      ClimateEntityFeature.FAN_MODE
+      | ClimateEntityFeature.SWING_MODE
+      | ClimateEntityFeature.TURN_ON
+      | ClimateEntityFeature.TURN_OFF
     )
 
 class FakeACEntity(FakeclimateEntity):
@@ -203,11 +203,11 @@ class FakeACEntity(FakeclimateEntity):
   def supported_features(self):
     """Return the list of supported features."""
     return (
-      ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE
-      | ClimateEntityFeature.SUPPORT_TARGET_TEMPERATURE_RANGE
-      | ClimateEntityFeature.SUPPORT_FAN_MODE
-      | ClimateEntityFeature.SUPPORT_TURN_ON
-      | ClimateEntityFeature.SUPPORT_TURN_OFF
+      ClimateEntityFeature.TARGET_TEMPERATURE
+      | ClimateEntityFeature.TARGET_TEMPERATURE_RANGE
+      | ClimateEntityFeature.FAN_MODE
+      | ClimateEntityFeature.TURN_ON
+      | ClimateEntityFeature.TURN_OFF
     )
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
