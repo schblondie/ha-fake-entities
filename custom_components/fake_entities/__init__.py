@@ -11,7 +11,6 @@ DOMAINS = [
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the Fake Entities component."""
-    # This method is only called if configuration is done via YAML
     return True
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):

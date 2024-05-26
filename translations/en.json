@@ -1,0 +1,12 @@
+{
+  "title": "Fake Entities",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Setup Fake Entities",
+        "description": "Set up the Fake Entities integration.",
+        "data": {}
+      }
+    }
+  }
+}
