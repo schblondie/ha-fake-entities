@@ -117,6 +117,11 @@ class FakeclimateEntity(ClimateEntity):
     """Return the target humidity range."""
     return self._target_humidity_range
 
+  @property
+  def hvac_modes(self):
+    """Return the list of available hvac operation modes."""
+    return [HVAC_MODE_HEAT, HVAC_MODE_COOL, HVAC_MODE_OFF]
+  
   def set_temperature(self, **kwargs):
     """Set the target temperature."""
     if "temperature" in kwargs:
