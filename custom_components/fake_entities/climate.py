@@ -14,15 +14,15 @@ class FakeclimateEntity(ClimateEntity):
   def __init__(self, name):
     """Initialize the climate entity."""
     self._name = name
-    self._target_temperature = None
-    self._current_temperature = None
-    self._target_humidity = None
-    self._current_humidity = None
+    self._target_temperature = 25.0
+    self._current_temperature = 21.0
+    self._target_humidity = 30.0
+    self._current_humidity = 50.0
     self._preset_mode = None
     self._fan_mode = None
     self._swing_mode = None
     self._aux_heat = None
-    self._is_on = None
+    self._is_on = True
     self._operation_mode = None
     self._hold_mode = None
     self._away_mode = None
@@ -240,6 +240,10 @@ class FakeHeaterEntity(FakeclimateEntity):
   def hvac_modes(self):
     """Return the list of available hvac operation modes."""
     return [HVACMode.OFF, HVACMode.HEAT]
+  
+  def __init__(self, name):
+    super().__init__(name)
+    self._hvac_mode = HVACMode.HEAT
 
 class FakeFanEntity(FakeclimateEntity):
   """Representation of a fake fan entity."""
@@ -258,6 +262,12 @@ class FakeFanEntity(FakeclimateEntity):
   def hvac_modes(self):
     """Return the list of available hvac operation modes."""
     return [HVACMode.OFF, HVACMode.FAN_ONLY]
+  
+  def __init__(self, name):
+    super().__init__(name)
+    self._fan_mode = "fan_on"
+    self._swing_mode = "swing_off"
+    self._hvac_mode = HVACMode.FAN_ONLY
 
 class FakeACEntity(FakeclimateEntity):
   """Representation of a fake AC entity."""
@@ -277,6 +287,10 @@ class FakeACEntity(FakeclimateEntity):
   def hvac_modes(self):
     """Return the list of available hvac operation modes."""
     return [HVACMode.OFF, HVACMode.COOL, HVACMode.FAN_ONLY]
+  
+  def __init__(self, name):
+    super().__init__(name)
+    self._hvac_mode = HVACMode.COOL
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake climate entry."""

@@ -1,14 +1,7 @@
 import logging
 
 from homeassistant.components.vacuum import (
-    SUPPORT_BATTERY,
-    SUPPORT_FAN_SPEED,
-    SUPPORT_PAUSE,
-    SUPPORT_RETURN_HOME,
-    SUPPORT_START,
-    SUPPORT_STATE,
-    SUPPORT_STATUS,
-    SUPPORT_STOP,
+    VacuumEntityFeature,
     StateVacuumEntity,
 )
 
@@ -55,14 +48,14 @@ class FakevacuumEntity(StateVacuumEntity):
     def supported_features(self):
         """Flag vacuum cleaner robot features that are supported."""
         return (
-            SUPPORT_BATTERY |
-            SUPPORT_FAN_SPEED |
-            SUPPORT_PAUSE |
-            SUPPORT_RETURN_HOME |
-            SUPPORT_START |
-            SUPPORT_STATE |
-            SUPPORT_STATUS |
-            SUPPORT_STOP
+            VacuumEntityFeature.PAUSE |
+            VacuumEntityFeature.STOP |
+            VacuumEntityFeature.RETURN_HOME |
+            VacuumEntityFeature.FAN_SPEED |
+            VacuumEntityFeature.BATTERY |
+            VacuumEntityFeature.STATUS |
+            VacuumEntityFeature.STATE |
+            VacuumEntityFeature.START
         )
 
     def start(self):

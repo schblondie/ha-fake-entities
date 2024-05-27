@@ -11,7 +11,7 @@ class FakeWaterHeaterEntity(WaterHeaterEntity):
     def __init__(self, name):
         """Initialize the water heater entity."""
         self._name = name
-        self._temperature = None
+        self._temperature = 25.0
         self._operation_mode = None
         self._away_mode = None
         self._temperature_unit = '°C'
