@@ -236,6 +236,11 @@ class FakeHeaterEntity(FakeclimateEntity):
       | ClimateEntityFeature.TURN_OFF
     )
 
+  @property
+  def hvac_modes(self):
+    """Return the list of available hvac operation modes."""
+    return [HVACMode.OFF, HVACMode.HEAT]
+
 class FakeFanEntity(FakeclimateEntity):
   """Representation of a fake fan entity."""
 
@@ -248,6 +253,11 @@ class FakeFanEntity(FakeclimateEntity):
       | ClimateEntityFeature.TURN_ON
       | ClimateEntityFeature.TURN_OFF
     )
+  
+  @property
+  def hvac_modes(self):
+    """Return the list of available hvac operation modes."""
+    return [HVACMode.OFF, HVACMode.FAN_ONLY]
 
 class FakeACEntity(FakeclimateEntity):
   """Representation of a fake AC entity."""
@@ -262,6 +272,11 @@ class FakeACEntity(FakeclimateEntity):
       | ClimateEntityFeature.TURN_ON
       | ClimateEntityFeature.TURN_OFF
     )
+  
+  @property
+  def hvac_modes(self):
+    """Return the list of available hvac operation modes."""
+    return [HVACMode.OFF, HVACMode.COOL, HVACMode.FAN_ONLY]
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
   """Set up the fake climate entry."""
