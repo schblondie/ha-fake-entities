@@ -31,6 +31,7 @@ class FakeclimateEntity(ClimateEntity):
     self._target_temperature_low = None
     self._target_temperature_high = None
     self._temperature_unit = '°C'
+    self._hvac_mode = None
 
   @property
   def name(self):
@@ -135,6 +136,11 @@ class FakeclimateEntity(ClimateEntity):
   def target_humidity_range(self):
     """Return the target humidity range."""
     return self._target_humidity_range
+
+  @property
+  def hvac_mode(self):
+    """Return the current operation mode."""
+    return self._hvac_mode
 
   @property
   def hvac_modes(self):
